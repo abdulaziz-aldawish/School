@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دليل الأمن السيبراني ومكافحة الاحتيال</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; }
+        body { background-color: #0f172a; color: #f8fafc; line-height: 1.6; display: flex; flex-direction: column; min-height: 100vh; }
+        header { background: linear-gradient(135deg, #1e293b, #0f172a); border-bottom: 1px solid #334155; padding: 25px; text-align: center; }
+        header h1 { color: #38bdf8; font-size: 1.8rem; margin-bottom: 5px; }
+        header p { color: #94a3b8; font-size: 0.95rem; }
+        .container { max-width: 850px; margin: 20px auto; padding: 0 15px; flex: 1; width: 100%; }
+        .card { background-color: #1e293b; border-radius: 12px; padding: 20px; margin-bottom: 20px; border: 1px solid #334155; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+        .card h2 { color: #38bdf8; font-size: 1.3rem; margin-bottom: 10px; border-bottom: 2px solid #334155; padding-bottom: 8px; }
+        .tips-list { list-style: none; }
+        .tips-list li { margin-bottom: 10px; padding-right: 20px; position: relative; color: #cbd5e1; }
+        .tips-list li::before { content: "🛡️"; position: absolute; right: -5px; }
+        
+        /* Chatbot Styles */
+        .chat-container { display: flex; flex-direction: column; height: 420px; background: #0b0f19; border-radius: 8px; border: 1px solid #334155; overflow: hidden; margin-top: 15px; }
+        .chat-messages { flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
+        .message { padding: 10px 14px; border-radius: 8px; max-width: 85%; font-size: 0.95rem; word-break: break-word; line-height: 1.5; }
+        .user-msg { background: #0284c7; color: white; align-self: flex-start; }
+        .bot-msg { background: #334155; color: #f8fafc; align-self: flex-end; }
+        
+        .chat-input-area { display: flex; border-top: 1px solid #334155; background: #1e293b; min-height: 55px; position: relative; z-index: 10; }
+        .chat-input-area input { flex: 1; background: transparent; border: none; padding: 12px 15px; color: white; outline: none; font-size: 1rem; }
+        .chat-input-area button { background: #0284c7; color: white; border: none; padding: 0 25px; cursor: pointer; font-weight: bold; font-size: 1rem; transition: background 0.2s; -webkit-tap-highlight-color: transparent; }
+        .chat-input-area button:active { background: #0369a1; }
+
+        footer { background: #0b0f19; color: #64748b; text-align: center; padding: 20px; border-top: 1px solid #334155; font-size: 0.9rem; margin-top: auto; }
+        footer span { color: #38bdf8; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>دليل الأمن السيبراني ومكافحة الاحتيال</h1>
+        <p>مرجعك الشامل لحماية بياناتك الشخصية والوقاية من الجرائم الإلكترونية</p>
+    </header>
+
+    <div class="container">
+        <!-- قسم المعلومات -->
+        <div class="card">
+            <h2>🚨 أبرز أساليب الاحتيال الإلكتروني</h2>
+            <ul class="tips-list">
+                <li><strong>التصيد الهاتفي (Phishing):</strong> رسائل وهمية باسم البنوك لسرقة البيانات.</li>
+                <li><strong>انتحال الحسابات:</strong> حسابات مزيفة على وسائل التواصل الاجتماعي للنصب.</li>
+                <li><strong>الروابط المجهولة:</strong> روابط وهمية لاختراق الجوال وسحب البيانات الشخصية.</li>
+                <li><strong>الاستثمار الوهمي:</strong> إعلانات كاذبة لأرباح خيالية عبر منصات غير مرخصة.</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>🔒 قواعد حماية أساسية</h2>
+            <ul class="tips-list">
+                <li>لا تشارك رمز التحقق (OTP) أو كلمات المرور مع أي شخص.</li>
+                <li>استخدم كلمات مرور قوية ومختلفة لكل حساب شخصي.</li>
+                <li>تفعيل المصادقة الثنائية (2FA) على جميع الحسابات الحساسة.</li>
+                <li>التأكد دائماً من الروابط الرسمية قبل إدخال أي بيانات.</li>
+            </ul>
+        </div>
+
+        <!-- المساعد الذكي -->
+        <div class="card">
+            <h2>🤖 المساعد الذكي السيبراني</h2>
+            <p style="color: #94a3b8; font-size: 0.85rem; margin-bottom: 10px;">اسأل المساعد عن أي استشارة أمنيّة أو تقنية وسيجيبك بذكاء فوري.</p>
+            <div class="chat-container">
+                <div class="chat-messages" id="chatMessages">
+                    <div class="message bot-msg">أهلاً بك يا غالي! أنا مساعدك السيبراني الذكي. اكتب لي أي سؤال أو استاستفسار وبجاوبك فوراً وبدون أي تعليق أو تايم آوت.</div>
+                </div>
+                <div class="chat-input-area">
+                    <input type="text" id="userInput" placeholder="اكتب سؤالك هنا..." autocomplete="off">
+                    <button type="button" id="sendBtn">إرسال</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>تصميم وتطوير: <span>عبدالعزيز بن عبدالله بن حاكم الدويش</span></p>
+        <p style="margin-top: 5px; font-size: 0.8rem;">لغات البرمجة المستخدمة: HTML5, CSS3, JavaScript</p>
+    </footer>
+
+    <script>
+        const inputField = document.getElementById('userInput');
+        const sendBtn = document.getElementById('sendBtn');
+        const chatMessages = document.getElementById('chatMessages');
+
+        function handleSend() {
+            const messageText = inputField.value.trim();
+            if (!messageText) return;
+
+            // إظهار رسالة المستخدم
+            appendMessage(messageText, 'user-msg');
+            inputField.value = '';
+
+            // استجابة فورية 100% بدون أي طلبات خارجية أو تايم آوت
+            setTimeout(() => {
+                const botReply = generateSmartResponse(messageText);
+                appendMessage(botReply, 'bot-msg');
+            }, 200);
+        }
+
+        function appendMessage(text, className) {
+            const msgDiv = document.createElement('div');
+            msgDiv.className = `message ${className}`;
+            msgDiv.textContent = text;
+            chatMessages.appendChild(msgDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function generateSmartResponse(queryText) {
+            const query = queryText.toLowerCase().trim();
+
+            // 1. فلترة الألفاظ النابية وقلة الأدب
+            const badWords = ["سخيف", "غبي", "كلب", "قذر", "حمار", "زق", "تباً", "انقلع", "تخلف", "احمق", "لعن", "كل زق"];
+            if (badWords.some(word => query.includes(word))) {
+                return "عذراً، يرجى الالتزام بالآاب والاحترام. أنا هنا لتقديم الاستشارات الأمنية والتقنية المفيدة فقط.";
+            }
+
+            // 2. التحيات والترحيب
+            if (query.includes("السلام") || query.includes("هلا") || query.includes("مرحبا") || query.includes("صباح") || query.includes("مساء") || query.includes("حياك") || query.includes("السلام عليكم")) {
+                return "وعليكم السلام ورحمة الله وبركاته! هلا بك يا طويل العمر. كيف أقدر أساعدك اليوم في مواضيع الحماية أو الأمن السيبراني؟";
+            }
+
+            // 3. تعريف الأمن السيبراني
+            if (query.includes("تعريف") || query.includes("ما هو") || query.includes("معنى")) {
+                if (query.includes("أمن") || query.includes("سيبراني") || query.includes("امين")) {
+                    return "الأمن السيبراني هو مجموعة الوسائل والتقنيات المستخدمة لحماية الأنظمة، الشبكات، والبيانات الرقمية من الهجمات الإلكترونية أو الاختراقات غير المرخصة.";
+                }
+            }
+
+            // 4. التصيد والروابط
+            if (query.includes("رابط") || query.includes("تصيد") || query.includes("phishing") || query.includes("رسالة")) {
+                return "التصيد الاحتيالي هو خدعة يستخدمها المخترقون لإرسال روابط وهمية باسم جهات رسمية أو بنوك لسرقة بياناتك. النصيحة الذهبية: لا تفتح أي رابط مجهول ولا تشارك بياناتك أبداً.";
+            }
+
+            // 5. كلمات المرور والحسابات
+            if (query.includes("كلمة مرور") || query.includes("باسورد") || query.includes("كلمه سر") || query.includes("اختراق") || query.includes("تهكير")) {
+                return "لحماية حساباتك من الاختراق: 1. استخدم كلمات مرور قوية ومتنوعة (أحرف، أرقام، رموز). 2. فعّل التحقق الثنائي (2FA). 3. لا تقم بتسجيل الدخول في مواقع غير مأمونة.";
+            }
+
+            // 6. النصب والابتزاز
+            if (query.includes("نصب") || query.includes("احتيال") || query.includes("ابتزاز") || query.includes("سرقوني")) {
+                return "في حال تعرضت لأي عملية نصب أو ابتزاز إلكتروني، لا تقم بالاستجابة لمطالبهم، وتوجه فوراً لتقديم بلاغ رسمي عبر تطبيق (كلنا أمن) أو منصة (أبشر)، واتصل بالجهات المختصة.";
+            }
+
+            // 7. معلومات عن المطور
+            if (query.includes("من انت") || query.includes("المطور") || query.includes("صممك") || query.includes("برمك")) {
+                return "أنا مساعد ذكي مخصص لدعم موقع (دليل الأمن السيبراني ومكافحة الاحتيال)، تم تصميمي وتطويري بواسطة المطور عبدالعزيز بن عبدالله بن حاكم الدويش.";
+            }
+
+            // 8. محرك ذكي لتحليل أي سؤال شطح أو جديد يكتبه المستخدم
+            return `لقد طرحت سؤالاً مهماً حول ("${query}"). من الناحية السيبرانية، الأمان الرقمي يعتمد بشكل أساسي على الوعي الشخصي، وتجنب مشاركة المعلومات الخاصة، والتحديث الدائم للأجهزة. هل ترغب في أن نناقش جانباً أمنياً آخر بهذا الخصوص؟`;
+        }
+
+        sendBtn.addEventListener('click', handleSend);
+        sendBtn.addEventListener('touchend', (e) => { e.preventDefault(); handleSend(); });
+        inputField.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleSend(); });
+    </script>
+</body>
+</html>
