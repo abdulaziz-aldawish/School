@@ -17,16 +17,17 @@
         .tips-list li { margin-bottom: 10px; padding-right: 20px; position: relative; color: #cbd5e1; }
         .tips-list li::before { content: "🛡️"; position: absolute; right: -5px; }
         
-        /* Chatbot Styles */
-        .chat-container { display: flex; flex-direction: column; height: 380px; background: #0b0f19; border-radius: 8px; border: 1px solid #334155; overflow: hidden; margin-top: 15px; }
+        /* Chatbot Styles Fixed for Mobile */
+        .chat-container { display: flex; flex-direction: column; height: 400px; background: #0b0f19; border-radius: 8px; border: 1px solid #334155; overflow: hidden; margin-top: 15px; }
         .chat-messages { flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
-        .message { padding: 10px 14px; border-radius: 8px; max-width: 80%; font-size: 0.95rem; }
+        .message { padding: 10px 14px; border-radius: 8px; max-width: 85%; font-size: 0.95rem; word-break: break-word; }
         .user-msg { background: #0284c7; color: white; align-self: flex-start; }
         .bot-msg { background: #334155; color: #f8fafc; align-self: flex-end; }
-        .chat-input-area { display: flex; border-top: 1px solid #334155; background: #1e293b; }
-        .chat-input-area input { flex: 1; background: transparent; border: none; padding: 12px; color: white; outline: none; font-size: 0.95rem; }
-        .chat-input-area button { background: #0284c7; color: white; border: none; padding: 0 20px; cursor: pointer; font-weight: bold; transition: background 0.2s; }
-        .chat-input-area button:hover { background: #0369a1; }
+        
+        .chat-input-area { display: flex; border-top: 1px solid #334155; background: #1e293b; min-height: 55px; position: relative; z-index: 10; }
+        .chat-input-area input { flex: 1; background: transparent; border: none; padding: 12px 15px; color: white; outline: none; font-size: 1rem; }
+        .chat-input-area button { background: #0284c7; color: white; border: none; padding: 0 25px; cursor: pointer; font-weight: bold; font-size: 1rem; transition: background 0.2s; -webkit-tap-highlight-color: transparent; }
+        .chat-input-area button:active { background: #0369a1; }
 
         footer { background: #0b0f19; color: #64748b; text-align: center; padding: 20px; border-top: 1px solid #334155; font-size: 0.9rem; margin-top: auto; }
         footer span { color: #38bdf8; font-weight: bold; }
@@ -40,14 +41,14 @@
     </header>
 
     <div class="container">
-        <!-- قسم المعلومات الشاملة والمكثفة -->
+        <!-- قسم المعلومات -->
         <div class="card">
             <h2>🚨 أبرز أساليب الاحتيال الإلكتروني</h2>
             <ul class="tips-list">
-                <li><strong>التصيد الهძبي (Phishing):</strong> إرسال رسائل وهمية باسم البنوك أو الجهات الحكومية لسرقة بياناتك البنكية.</li>
-                <li><strong>انتحال الحسابات:</strong> إنشاء حسابات مزيفة على وسائل التواصل الاجتماعي للإيقاع بالضحايا واستدرار الأموال.</li>
-                <li><strong>الروابط المجهولة:</strong> روابط وهمية تطلب تحديث بيانات أو استلام جوائز وهي وسيلة لاختراق الجوال.</li>
-                <li><strong>الاستثمار الوهمي:</strong> إعلانات تروج لأرباح خيالية وسريعة عبر منصات تداول غير مرخصة.</li>
+                <li><strong>التصيد الهاتفي (Phishing):</strong> إرسال رسائل وهمية باسم البنوك لسرقة بياناتك البنكية.</li>
+                <li><strong>انتحال الحسابات:</strong> إنشاء حسابات مزيفة على وسائل التواصل للإيقاع بالضحايا.</li>
+                <li><strong>الروابط المجهولة:</strong> روابط وهمية تطلب تحديث بيانات أو استلام جوائز لاختراق الجوال.</li>
+                <li><strong>الاستثمار الوهمي:</strong> إعلانات تروج لأرباح خيالية عبر منصات غير مرخصة.</li>
             </ul>
         </div>
 
@@ -55,23 +56,23 @@
             <h2>🔒 قواعد حماية أساسية</h2>
             <ul class="tips-list">
                 <li>لا تشارك رمز التحقق (OTP) أو كلمات المرور مع أي شخص كائناً من كان.</li>
-                <li>استخدم كلمات مرور قوية ومعقدة ومختلفة لكل حساب.</li>
+                <li>استخدم كلمات مرور قوية ومختلفة لكل حساب.</li>
                 <li>قم بتفعيل المصادقة الثنائية (2FA) على جميع حساباتك الحساسة.</li>
-                <li>تأكد دائماً من الروابط الرسمية للجهات قبل إدخال أي بيانات شخصية.</li>
+                <li>تأكد دائماً من الروابط الرسمية للجهات قبل إدخال بياناتك.</li>
             </ul>
         </div>
 
-        <!-- المساعد الذكي المحسّن -->
+        <!-- المساعد الذكي -->
         <div class="card">
             <h2>🤖 المساعد الذكي السيبراني</h2>
-            <p style="color: #94a3b8; font-size: 0.85rem; margin-bottom: 10px;">اسأل المساعد عن أي استشارة أمنيّة، أو استفسر عن أساليب النصب وكيفية تجنبها.</p>
+            <p style="color: #94a3b8; font-size: 0.85rem; margin-bottom: 10px;">اسأل المساعد عن أي استشارة أمنيّة أو كيفية تجنب الاحتيال.</p>
             <div class="chat-container">
                 <div class="chat-messages" id="chatMessages">
-                    <div class="message bot-msg">أهلاً بك! أنا مساعدك السيبراني الذكي. تفضل، كيف يمكنني مساعدتك في حماية بياناتك أو الإبلاغ عن احتيال؟</div>
+                    <div class="message bot-msg">أهلاً بك! أنا مساعدك السيبراني الذكي. كيف يمكنني مساعدتك في حماية بياناتك اليوم؟</div>
                 </div>
                 <div class="chat-input-area">
-                    <input type="text" id="userInput" placeholder="اكتب سؤالك هنا..." onkeypress="handleKeyPress(event)">
-                    <button onclick="sendMessage()">إرسال</button>
+                    <input type="text" id="userInput" placeholder="اكتب سؤالك هنا..." autocomplete="off">
+                    <button type="button" id="sendBtn">إرسال</button>
                 </div>
             </div>
         </div>
@@ -83,18 +84,13 @@
     </footer>
 
     <script>
-        function handleKeyPress(event) {
-            if (event.key === 'Enter') {
-                sendMessage();
-            }
-        }
+        const inputField = document.getElementById('userInput');
+        const sendBtn = document.getElementById('sendBtn');
+        const chatMessages = document.getElementById('chatMessages');
 
-        function sendMessage() {
-            const inputField = document.getElementById('userInput');
+        function handleSend() {
             const messageText = inputField.value.trim();
             if (!messageText) return;
-
-            const chatMessages = document.getElementById('chatMessages');
 
             // رسالة المستخدم
             const userDiv = document.createElement('div');
@@ -105,48 +101,65 @@
             inputField.value = '';
             chatMessages.scrollTop = chatMessages.scrollHeight;
 
-            // محاكاة تفكير المساعد وردّه الذكي الشامل
+            // رد المساعد الذكي
             setTimeout(() => {
                 const botDiv = document.createElement('div');
                 botDiv.className = 'message bot-msg';
                 botDiv.textContent = getSmartAIResponse(messageText);
                 chatMessages.appendChild(botDiv);
                 chatMessages.scrollTop = chatMessages.scrollHeight;
-            }, 600);
+            }, 500);
         }
+
+        // ربط الأحداث بالضغط واللمس للجوال بشكل مباشر
+        sendBtn.addEventListener('click', handleSend);
+        sendBtn.addEventListener('touchend', (e) => {
+            e.preventDefault();
+            handleSend();
+        });
+
+        inputField.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                handleSend();
+            }
+        });
 
         function getSmartAIResponse(text) {
             const query = text.toLowerCase();
 
-            // فلترة الألفاظ النابية وقلة الأدب
-            const badWords = ["سخيف", "غبي", "كلب", "قذر", "حمار", "لعن", "زق", "تباً", "انقلع", "تخلف"];
-            if (someWordIncludes(query, badWords)) {
+            // فلترة الألفاظ النابية
+            const badWords = ["سخيف", "غبي", "كلب", "قذر", "حمار", "زق", "تباً", "انقلع", "تخلف"];
+            if (badWords.some(word => query.includes(word))) {
                 return "عذراً، أرجو الحفاظ على الأسلوب اللائق والاحترام في الحوار. أنا هنا لمساعدتك في الأمور التقنية والأمن السيبراني فقط.";
             }
 
-            // الرد على التحية والسلام
-            if (query.includes("السلام عليكم") || query.includes("هلا") || query.includes("مرحبا") || query.includes("صباح") || query.includes("مساء") || query.includes("كيف حالك")) { وعليكم السلام ورحمة الله وبركاته! أهلًا بك يا أخي، أنا جاهز للإجابة على استفساراتك الأمنية والتقنية. كيف يمكنني خدمتك اليوم؟; }
-
-            // الردود المتخصصة في الأمن السيبراني والاحتيال
-            if (query.includes("نصب") || query.includes("احتيال") || query.includes("انصب علي") || query.includes("سرقوني")) {
-                return "إذا تعرضت لعملية احتيال، يجب عليك فوراً: 1. إيقاف البطاقات البنكية والاتصال بالبنك. 2. تقديم بلاغ رسمي عبر تطبيق (كلنا أمن) أو منصة (أبشر). 3. تغيير كلمات مرور بريدك الإلكتروني وحساباتك.";
-            } 
-            else if (query.includes("رابط") || query.includes("تهكير") || query.includes("اختراق")) {
-                return "الروابط الوهمية هي أسهل طريقة لاختراق الجوالات. لا تضغط أبداً على أي رابط يصلك من جهة مجهولة تطلب تحديث بيانات أو بيانات بنكية، واحرص دائماً على تحميل التطبيقات من متاجرها الرسمية فقط.";
-            } 
-            else if (query.includes("كلمة مرور") || query.includes("باسورد")) {
-                return "كلمة المرور القوية يجب ألا تقل عن 12 خانة، وتحتوي على حروف كبيرة وصغيرة، وأرقام، ورموز خاصة (مثل !@#$). تجنب استخدام معلومات شخصية واضحة مثل تواريخ الميلاد.";
-            } 
-            else if (query.includes("من انت") || query.includes("وش تقنيتك") || query.includes("اسمك")) {
-                return "أنا مساعد ذكي تم برمجتي خصيصاً لموقع دليل الأمن السيبراني ومكافحة الاحتيال، لمساعدة الزوار وتوعيتهم رقمياً.";
+            // التحية والسلام
+            if (query.includes("السلام") || query.includes("هلا") || query.includes("مرحبا") || query.includes("صباح") || query.includes("مساء") || query.includes("كيف")) {
+                return "وعليكم السلام ورحمة الله وبركاته! أهلًا بك يا أخي، أنا جاهز للإجابة على استفساراتك الأمنية والتقنية. كيف يمكنني خدمتك اليوم؟";
             }
 
-            // رد عام ذكي وشامل لأي سؤال آخر
-            return "سؤال مهم جداً في المجال السيبراني والتقني. أنصحك دائماً باليقظة الكاملة وعدم مشاركة أي بيانات حساسة أو رموز تحقق مع أي جهة غير مמוوقة. هل تود الاستفسار عن نقطة محددة مثل حماية الحسابات أو التعامل مع الروابط المشبوهة؟";
-        }
+            // احتيال ونصب
+            if (query.includes("نصب") || query.includes("احتيال") || query.includes("سرقوني") || query.includes("انصب")) {
+                return "إذا تعرضت لعملية احتيال، يجب عليك فوراً: 1. إيقاف البطاقات البنكية والاتصال بالبنك. 2. تقديم بلاغ عبر تطبيق (كلنا أمن) أو منصة (أبشر). 3. تغيير كلمات مرور حساباتك.";
+            } 
+            
+            // روابط واختراق
+            if (query.includes("رابط") || query.includes("تهكير") || query.includes("اختراق")) {
+                return "الروابط الوهمية هي أسهل طريقة للاختراق. لا تضغط على أي رابط مجهول يطلب بياناتك، وحمل التطبيقات من المتجر الرسمي فقط.";
+            } 
+            
+            // كلمات مرور
+            if (query.includes("كلمة مرور") || query.includes("باسورد")) {
+                return "كلمة المرور القوية يجب ألا تقل عن 12 خانة، وتتضمن حروفاً كبيرة وصغيرة وأرقاماً ورموزاً خاصة مثل (!@#$).";
+            } 
 
-        function someWordIncludes(str, wordsArray) {
-            return wordsArray.some(word => str.includes(word));
+            // معلومات عن البوت
+            if (query.includes("من انت") || query.includes("وش تقنيتك")) {
+                return "أنا مساعد ذكي مخصص لموقع دليل الأمن السيبراني ومكافحة الاحتيال، تم تطويري لتوعية الزوار والإجابة على استفساراتهم.";
+            }
+
+            // الرد الافتراضي
+            return "سؤال مهم جداً. أنصحك دائماً باليقظة وعدم مشاركة أي بيانات حساسة أو رموز تحقق مع أي جهة غير موثوقة. هل تود الاستفسار عن نقطة محددة؟";
         }
     </script>
 </body>
