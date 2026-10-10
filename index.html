@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>متجر التميز - لوحة المنتجات وإدارة المبيعات</title>
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-hover: #4338ca;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text: #0f172a;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 24px;
+        }
+
+        .nav-tabs {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 10px 18px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-hover);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text);
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 32px;
+            padding: 20px;
+        }
+
+        .hero h1 { font-size: 2rem; margin-bottom: 8px; }
+        .hero p { color: var(--text-muted); }
+
+        .layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .layout { grid-template-columns: 1fr; }
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 24px;
+        }
+
+        .card h2 {
+            font-size: 1.25rem;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 0.95rem;
+        }
+
+        .categories {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-muted);
+            border: 2px dashed var(--border);
+            border-radius: 8px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Header -->
+    <header>
+        <h2>متجر التميز</h2>
+        <div class="nav-tabs">
+            <button class="btn btn-primary" onclick="showTab('store')">واجهة المتجر</button>
+            <button class="btn btn-outline" onclick="showTab('admin')">لوحة التحكم (المالك)</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>خيارات متجددة وتسليم مباشر</h1>
+        <p>تسوق أفضل المنتجات الرقمية بكل سهولة وبأمان كامل</p>
+    </section>
+
+    <!-- Content Layout -->
+    <div class="layout">
+        <!-- Main Area -->
+        <main>
+            <!-- Store Tab -->
+            <div id="store-tab">
+                <div class="card">
+                    <h2>معروضات المتجر</h2>
+                    <div class="categories">
+                        <button class="btn btn-outline">الكل</button>
+                        <button class="btn btn-outline">خدمات رقمية</button>
+                        <button class="btn btn-outline">اشتراكات وحسابات</button>
+                        <button class="btn btn-outline">تصاميم وبرمجيات</button>
+                    </div>
+
+                    <div class="empty-state">
+                        <p>لا توجد منتجات حالياً!</p>
+                        <small>يمكنك إضافة منتجات جديدة من خلال الانتقال إلى "لوحة التحكم".</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Admin Tab -->
+            <div id="admin-tab" style="display: none;">
+                <div class="card">
+                    <h2>إضافة منتج جديد</h2>
+                    <form id="product-form">
+                        <div class="form-group">
+                            <label>اسم المنتج *</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>السعر (ر.س) *</label>
+                            <input type="number" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>الفئة / القسم *</label>
+                            <select class="form-control" required>
+                                <option>خدمات رقمية</option>
+                                <option>اشتراكات وحسابات</option>
+                                <option>تصاميم وبرمجيات</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>رابط صورة المنتج (اختياري)</label>
+                            <input type="url" class="form-control" placeholder="إذا تُرك فارغاً سيتم توليد أيقونة تلقائياً">
+                        </div>
+                        <div class="form-group">
+                            <label>وصف المنتج</label>
+                            <textarea class="form-control" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">حفظ المنتج</button>
+                    </form>
+                </div>
+
+                <div class="card">
+                    <h2>الطلبات الواردة للمتجر</h2>
+                    <div class="empty-state">
+                        <p>لا توجد أي طلبات حالياً.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Sidebar / Cart -->
+        <aside>
+            <div class="card">
+                <h2>سلة المشتريات</h2>
+                <div class="empty-state" style="padding: 20px;">
+                    السلة فارغة
+                </div>
+                <div style="margin-top: 16px; font-weight: bold; font-size: 1.1rem;">
+                    الإجمالي: 0.00 ر.س
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>تأكيد الطلب وإرسال التنبيه</h2>
+                <form id="checkout-form">
+                    <div class="form-group">
+                        <label>الاسم الكامل *</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>رقم الواتساب / الجوال *</label>
+                        <input type="tel" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>ملاحظات أو معرف الديسكورد (اختياري)</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">إرسال الطلب الآن (0 ر.س)</button>
+                </form>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        جميع الحقوق محفوظة © 2026 - منصة متجر التميز والتحكم بالمبيعات
+    </footer>
+</div>
+
+<script>
+    function showTab(tabName) {
+        if (tabName === 'store') {
+            document.getElementById('store-tab').style.display = 'block';
+            document.getElementById('admin-tab').style.display = 'none';
+        } else {
+            document.getElementById('store-tab').style.display = 'none';
+            document.getElementById('admin-tab').style.display = 'block';
+        }
+    }
+</script>
+
+</body>
+</html>
